@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: RegularText/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,66 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: RegularText/index.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// TOP LEVEL IMPORTS
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, Text } from 'react-native';
+// MODULES
+import { fontConfig } from '../../modules/config'
+
+const s = StyleSheet.create({
+  text: {
+    textAlign: 'left', 
+    fontFamily: fontConfig.boldFont, 
+    fontSize: 17
+  },
+});
 
 
-    <h3> </h3>
+// DOCS
+/**
+ * @namespace RegularText
+ * @description Reusable component to make sure we use the same styles everywhere for regular text.
+* @prop keyName {String} - 
+ * the name of the data you passed in. 
+ * @prop children {object} - 
+ * this is the text you pass in to &lt;RegularText>Hi Friend&lt;/RegularText>
+ * @prop numberOfLines {number}
+ * @prop onPress {function}
+*/
 
+const RegularText = ({ children, numberOfLines=1, onPress, style={} }) => {
+  return (
+    &lt;Text
+      numberOfLines={numberOfLines}
+      onPress={()=>onPress()}
+      style={[s.text, style]}
+    >
+      { children }
+    &lt;/Text>
+  )
+}
 
+RegularText.propTypes = {
+  onPress: PropTypes.func,
+}
 
+RegularText.defaultProps = {
+  onPress: () => {}
+}
 
-
-
-
-
-
-
-    
-
-
-
-
-
+export default RegularText</code></pre>
+        </article>
+    </section>
 
 
 
