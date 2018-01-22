@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: EmailInput</title>
+    <title>JSDoc: Namespace: TabNoticationIcon</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: EmailInput</h1>
+    <h1 class="page-title">Namespace: TabNoticationIcon</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>EmailInput</h2>
+        <h2>TabNoticationIcon</h2>
         
     
 </header>
@@ -37,7 +37,8 @@
     <div class="container-overview">
     
         
-            <div class="description">reusable email input</div>
+            <div class="description">Used in the TabNavigator, usually, for the Friends and Activity tabs, which have some notification-like functionality. 
+This icon will show up with a red dot when users have new messages. We should probably abstract this logic to the back end...</div>
         
 
         
@@ -69,99 +70,7 @@
 
         <tr>
             
-                <td class="name"><code>onChange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>placeholder</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>label</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>containerStyle</code></td>
+                <td class="name"><code>incomingFollows</code></td>
             
 
             <td class="type">
@@ -177,14 +86,14 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">an apollo query that holds an array of requests from other users who want to follow me (in other words, friend me)</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>inputStyle</code></td>
+                <td class="name"><code>hasUnreadNotificationsData</code></td>
             
 
             <td class="type">
@@ -200,7 +109,78 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">tells us if the current user has unread notifications.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hasUnreadBuyingData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the target user is the person displayed on the user card.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hasUnreadSellingData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the target user is the person displayed on the user card.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">we can pass a 'type' prop into TabNoticationIcon to determine if 
+this icon is used for the friends tab or the acvitity tab, and it's used 
+in our lofic to display the dot or not.</td>
         </tr>
 
     
@@ -239,7 +219,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FormInputs_EmailInput.js.html">FormInputs/EmailInput.js</a>, <a href="FormInputs_EmailInput.js.html#line38">line 38</a>
+        <a href="TabNoticationIcon_index.js.html">TabNoticationIcon/index.js</a>, <a href="TabNoticationIcon_index.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
