@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: FormInputs/EmailInput.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: FormInputs/EmailInput.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// TOP LEVEL IMPORTS
+import React from 'react';
+import PropTypes from 'prop-types';
+import { TouchableWithoutFeedback, Keyboard, View, Text } from 'react-native';
+// ANTD
+import { InputItem } from 'antd-mobile';
+import InputItemStyle from 'antd-mobile/lib/input-item/style/index.native';
+//
+import { colorConfig, stylesConfig, fontConfig, AUTH_LOGO } from '../../modules/config';
+
+const newStyle = {
+  ...InputItemStyle,
+  input: {
+    ...InputItemStyle.input,
+    fontSize: 17,
+    fontFamily: fontConfig.regularFont,
+  },
+};
+
+// CONSTANTS &amp; DESTRUCTURING
+// ===================================
+const ErrorsList = ({ fieldName, form }) => {
+  return (
+    &lt;View
+      style={{
+        marginTop: 2.5,
+      }}>
+      &lt;Text style={{ color: 'red' }}>
+        {(errors = form.getFieldError(fieldName)) ? errors.join(',') : null}
+      &lt;/Text>
+    &lt;/View>
+  );
+};
+
+
+// DOCS
+// =========================
+/**
+ *
+ * @namespace EmailInput
+ * @description reusable email input
+ * @prop onChange {function} 
+ * @prop value {string}
+ * @prop placeholder {string}
+ * @prop label {string}
+ * @prop containerStyle {object}
+ * @prop inputStyle {object}
+ * 
+ */
+
+
+ 
+// EXPORTED COMPONENT
+// ===================================
+class EmailInput extends React.Component {
+  state = {
+    showError: false,
+  };
+  render() {
+    const { onChangeText, value, placeholder, form } = this.props;
+    const { getFieldError, getFieldDecorator, getFieldProps, isFieldValidating } = form;
+
+    return (
+      &lt;TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        &lt;View
+          style={{
+            margin: 'auto',
+            width: 290,
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+          }}>
+          {getFieldDecorator('email', {
+            initialValue: '',
+            validateFirst: true,
+            rules: [
+              { required: true, message: 'Enter your Email.' },
+              { type: 'email', message: 'Not a valid email address.' },
+              { max: 100, message: 'Must be no more than 100 characters.' },
+            ],
+            //defaultValue: this.state.email,
+            // validateTrigger: 'onBlur',
+            // rules: [
+            //   { required: true, message: 'Input your Email!' },
+            //   { type: 'email', message: 'The input is not valid E-mail!' },
+            //   { max: 100, message: 'Must be no more than 100 characters!' },
+            // ],
+          })(
+            &lt;InputItem
+              placeholder={'Email'}
+              style={{
+                marginLeft: 0,
+                paddingRight: 0,
+                fontSize: 17,
+              }}
+              keyboardType='email-address'
+              autoCapitalize='none'
+              error={(this.state.showError || this.props.showEmailError) &amp;&amp; getFieldError('email')}
+              onFocus={() => {
+                this.setState({
+                  showError: false,
+                });
+                this.props.dismissEmailError();
+                this.props.hideServerErrors();
+              }}
+              onChange={() => {
+                this.setState({
+                  showError: false,
+                });
+                this.props.dismissEmailError();
+                this.props.hideServerErrors();
+              }}
+              onBlur={() => {
+                this.setState({
+                  showError: true,
+                });
+                this.props.hideServerErrors();
+              }}
+              //styles={StyleSheet.create(newStyle)}
+              clear
+            />
+          )}
+          {(this.state.showError || this.props.showEmailError) &amp;&amp; (
+            &lt;ErrorsList fieldName="email" form={form} />
+          )}
+        &lt;/View>
+      &lt;/TouchableWithoutFeedback>
+    );
+  }
+}
+
+EmailInput.propTypes = {
+  label: PropTypes.string,
+  form: PropTypes.object,
+  //initialValue: PropTypes.oneOfType([ PropTypes.string, PropTypes.object, PropTypes.number, PropTypes.array ]),
+  message: PropTypes.string,
+  placeholder: PropTypes.string,
+  required: PropTypes.bool,
+};
+
+// Specifies the default values for props:
+EmailInput.defaultProps = {
+  label: 'Description',
+  placeholder: 'Type your message here...',
+  message: 'Please choose a status!',
+  required: true,
+};
+
+export { EmailInput };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="EmailInput.html">EmailInput</a></li><li><a href="UsersSearch.html">UsersSearch</a></li><li><a href="UsersSearch.FriendsOfFriends.html">FriendsOfFriends</a></li><li><a href="UsersSearch.UsersSearchList.html">UsersSearchList</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Jan 21 2018 20:30:38 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
